@@ -30,7 +30,7 @@ class DatabaseUtil():
         conn = pymysql.connect(
             host = '127.0.0.1',
             user = 'root',
-            password = 'a7890',
+            password = '7890',
             db = 'p2p',
             charset = 'utf8',
             cursorclass = pymysql.cursors.DictCursor
