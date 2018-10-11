@@ -7,7 +7,7 @@ import logging
 class LogUtil():
     def __init__(self, filepath):
         logging.basicConfig(level=logging.INFO,
-                            format='%(asctime)s %(filename)s[line:%(lineno)] %(levelname)s %(message)s',
+                            format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                             datefmt='%a, %d %b %Y %H:%M:%S',
                             filename=filepath,
                             filemode='w')
