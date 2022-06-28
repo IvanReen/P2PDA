@@ -14,13 +14,12 @@ from setUtil import SessionUtil, DatabaseUtil, LogUtil, DictUtil
 
 def handleData(returnStr):
     jsonData = json.loads(returnStr)
-    planList = jsonData.get('data').get('list')
-    return planList
+    return jsonData.get('data').get('list')
 
 def storeData(jsonOne, conn, cur, logUtil, loanId):
     amount = jsonOne.get('amount')
     appendMultipleAmount = jsonOne.get('appendMultipleAmount')
-    if appendMultipleAmount == None:
+    if appendMultipleAmount is None:
         appendMultipleAmount = '0'
     applyQuitDays = jsonOne.get('applyQuitDays')
     baseInterestRate = jsonOne.get('baseInterestRate')
@@ -30,7 +29,7 @@ def storeData(jsonOne, conn, cur, logUtil, loanId):
     expectedYearRate = jsonOne.get('expectedYearRate')
     extraInterestRate = jsonOne.get('extraInterestRate')
     inalPeriod = jsonOne.get('inalPeriod')
-    if inalPeriod == None:
+    if inalPeriod is None:
         inalPeriod = '0'
     uPlanId = jsonOne.get('id')
     lockPeriod = jsonOne.get('lockPeriod')
@@ -54,7 +53,8 @@ session = SessionUtil()
 conn, cur = DatabaseUtil().getConn()
 logUtil = LogUtil('uplanList.log')
 for i in range(366):
-    url='https://www.renrendai.com/pc/p2p/uPlan/getFinancePlanList?startNum='+str(i)+'&limit=10&_='+str(int(time.time()))
+    url = f'https://www.renrendai.com/pc/p2p/uPlan/getFinancePlanList?startNum={str(i)}&limit=10&_={int(time.time())}'
+
     try:
         planList = handleData(session.getReq(url))
         # print(planList)

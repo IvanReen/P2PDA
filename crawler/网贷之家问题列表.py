@@ -13,8 +13,7 @@ from logUtil import LogUtil
 import traceback
 def handleData(returnStr):
     jsonData=json.loads(returnStr)
-    platData=jsonData.get('data').get('platOuterVo')
-    return platData
+    return jsonData.get('data').get('platOuterVo')
 def storeData(jsonOne,conn,cur,platId):
     actualCapital=jsonOne.get('actualCapital')
     aliasName=jsonOne.get('aliasName')
