@@ -68,7 +68,7 @@ class DictUtil():
         getStr = self.dictObject.get(keyStr)
         if getStr is None:
             return
-        if (type(getStr) == int or type(getStr) == float or type(getStr) == bool):
+        if type(getStr) in [int, float, bool]:
             return str(getStr)
         # py2
         # if type(getStr) == unicode:

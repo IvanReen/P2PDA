@@ -13,8 +13,7 @@ from logUtil import LogUtil
 import traceback
 def handleData(returnStr):
     jsonData=json.loads(returnStr)
-    loanList=jsonData.get('data').get('jsonList')
-    return loanList
+    return jsonData.get('data').get('jsonList')
 def storeData(jsonOne,conn,cur,planId):
     amount=jsonOne.get('amount')
     createTime=jsonOne.get('createTime')
